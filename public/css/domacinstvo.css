@@ -1,0 +1,36 @@
+.inner-page #header{ 
+	background-color: black;
+}
+
+.inner-page #main{ 
+	margin-top: 150px;
+	margin-bottom: 150px;
+}
+
+/* Section header for inner-page */
+.inner-page .section-header h3,
+.inner-page .section-header h3::before,
+.inner-page .section-header h3::after{
+	text-align: left;
+	left: 0;
+}
+
+@media(min-width: 1024px){
+	.inner-page .section-header h3{
+		margin-bottom: 40px;
+	}
+}
+/****************/
+
+/* Listing clasess */
+
+.listing-image{
+	display: block;
+	width: 100%;
+	height: 200px;
+	background-color: silver;
+	background-size: cover;
+}
+
+
+/********************/

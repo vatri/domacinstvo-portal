@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Домаћинства!{% endblock %}
+
+{% block body_class %}inner-page{% endblock %}
+
+{% block content %}
+
+	<section id="page-content">
+		
+		<div class="container">
+		  <div class="section-header">
+		    <h3>Домаћинства</h3>
+		  </div>
+
+		  <div class="row">
+
+		  	{% for listing in listings %}
+
+			    <div class="col-lg-4 col-md-6 wow fadeInUp">
+			    	<h3>{{ listing.title }}</h3>
+			    	<p><i class="ion-location"></i> {{ listing.location }}</p>
+			    	<p>
+			    		{{ listing.description }}
+			    	</p>
+			    	{% set img = listing.listingImages|first %}
+			    	
+			    	{% if img %}
+			    	<div class="listing-image" 
+			    				style="background-image: url({{ asset(listing_img_path ~ img.path) }})"> </div>
+			    	{% else %}
+							<div class="listing-image" ></div>
+			    	{% endif %}
+			    </div>
+
+		  	{% endfor %}
+
+
+		  </div>
+		</div> <!-- Container -->
+	</section>
+
+{% endblock %}
