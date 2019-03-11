@@ -7,6 +7,11 @@
 	margin-bottom: 150px;
 }
 
+/* Slider styles */
+#intro .carousel-item::before{
+	background-color: rgba(0, 0, 0, 0.55);
+}
+
 /* Section header for inner-page */
 .inner-page .section-header h3,
 .inner-page .section-header h3::before,
@@ -34,3 +39,8 @@
 
 
 /********************/
+
+#call-to-action{
+	background: #016b01;
+
+}

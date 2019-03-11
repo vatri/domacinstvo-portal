@@ -46,16 +46,18 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">Domacinstvo.rs</a></h1>
+        <h1><a href="{{ path('') }}" class="scrollto">Domacinstvo.rs</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="{{ path('home') }}">Почетна</a></li>
-          <li><a href="#about">О платформи</a></li>
-          <li><a href="{{ path('listing') }}">Домаћинства</a></li>
+          <li class="{{ app.request.attributes.get('_route') == '' ? 'menu-active' }}"><a href="{{ path('') }}">Почетна</a></li>
+          <li ><a href="#about">О платформи</a></li>
+          <li class="{{ app.request.attributes.get('_route') == 'listings' ? 'menu-active' }}">
+            <a href="{{ path('listings') }}">Домаћинства </a>
+          </li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
           <!-- <li><a href="#team">Team</a></li>
           <li class="menu-has-children"><a href="">Drop Down</a>

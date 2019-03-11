@@ -122,7 +122,7 @@
   });
 
   // Navigation active state on scroll
-  var nav_sections = $('section');
+/*  var nav_sections = $('section');
   var main_nav = $('.nav-menu, #mobile-nav');
   var main_nav_height = $('#header').outerHeight();
 
@@ -139,7 +139,7 @@
       }
     });
   });
-
+*/
   // Intro carousel
   var introCarousel = $(".carousel");
   var introCarouselIndicators = $(".carousel-indicators");
