@@ -34,7 +34,7 @@ class Listing
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ListingImage", mappedBy="Listing")
+     * @ORM\OneToMany(targetEntity="App\Entity\ListingImage", mappedBy="Listing", fetch="EAGER")
      */
     private $listingImages;
 
