@@ -69,6 +69,9 @@
             </ul>
           </li> -->
           <li><a href="#contact">Контакт</a></li>
+          <li class="{{ app.request.attributes.get('_route') == 'publish_listing' ? 'menu-active' }}">
+            <a href="{{ path('publish_listing') }}" class="btn btn-sm btn-success">Објави</a>
+          </li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>

@@ -1,3 +1,10 @@
+
+/* Button in top menu: */
+.nav-menu a.btn{
+	padding: 3px 5px;
+}
+/**********************/
+
 .inner-page #header{ 
 	background-color: black;
 }
@@ -9,7 +16,7 @@
 
 /* Slider styles */
 #intro .carousel-item::before{
-	background-color: rgba(0, 0, 0, 0.55);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Section header for inner-page */
