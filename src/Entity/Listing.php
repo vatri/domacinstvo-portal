@@ -38,6 +38,16 @@ class Listing
      */
     private $listingImages;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $visible = 0;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->listingImages = new ArrayCollection();
@@ -111,6 +121,30 @@ class Listing
                 $listingImage->setListing(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVisible(): ?int
+    {
+        return $this->visible;
+    }
+
+    public function setVisible(int $visible): self
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

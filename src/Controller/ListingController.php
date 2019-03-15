@@ -8,8 +8,10 @@ use App\Entity\Listing;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\ListingType;
 
 
 class ListingController extends AbstractController
@@ -19,16 +21,16 @@ class ListingController extends AbstractController
      */
     public function index()
     {
-    	$listings = $this->getDoctrine()
-			    ->getRepository(Listing::class)
-			    ->findAll();
+//    	$listings = $this->getDoctrine()->getRepository(Listing::class)->findAll();
+        $orderBy = ['title' => 'ASC'];
+    	$listings = $this->getDoctrine()->getRepository(Listing::class)->findBy(['visible' => 1], $orderBy);
+    	
+		$listing_img_path = $this->getParameter('listing_img_path');
 
-			$listing_img_path = $this->getParameter('listing_img_path');
-
-      return $this->render('listing/listings.html.twig', [
+        return $this->render('listing/listings.html.twig', [
           'listings' => $listings,
           'listing_img_path' => $listing_img_path
-      ]);
+        ]);
     
     }//index()
 		/**
@@ -39,15 +41,23 @@ class ListingController extends AbstractController
 
 			$listing = new Listing();
 
-			$form = $this->createFormBuilder($listing)
-            ->add('title', TextType::class)
-            // ->add('location', DateType::class)
-            ->add('location', TextType::class)
-            ->add('description', TextareaType::class, ['attr' => ['class' => 'form-textarea']])
-            // ->add('thumb')
-            ->add('save', SubmitType::class, ['label' => 'Пошаљи'])
-            ->getForm();
+			$form = $this->createForm(ListingType::class);
+			$form->add('Save', SubmitType::class, ['label' => 'Објави']);
 
+			$form->handleRequest($request);
+			
+			if($form->isSubmitted() && $form->isValid()){
+			    $listing = $form->getData();
+			    $em = $this->getDoctrine()->getManager();
+			    $em->persist($listing);
+			    $em->flush();
+			    
+			    $this->addFlash("info", "Подаци сачувани");
+			    
+			    return $this->redirectToRoute("listings");
+			    
+			}
+			
 			return $this->render('listing/publish_listing.html.twig',[
 				'form' => $form->createView()
 			]);
