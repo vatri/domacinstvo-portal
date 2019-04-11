@@ -7,6 +7,7 @@ parameters:
     locale: 'en'
     listing_img_dir: '%kernel.project_dir%/public/uploads/listing_img/'
     listing_img_path: 'uploads/listing_img/'
+    email.admin: 'trivudin@gmail.com'
 
 services:
     # default configuration for services in *this* file

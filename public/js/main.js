@@ -203,5 +203,43 @@
     items: 1
   });
 
+
+  $('.contactForm').submit(function(){
+
+  var _form = $(this);
+
+  var d = {
+        name: _form.find('[name=name]').val(),
+        email: _form.find('[name=email]').val(),
+        message: _form.find('[name=message]').val(),
+  };
+
+    $.ajax({
+      method: 'post',
+      url: '/ajax_contact', 
+      async: false,
+      data: d,
+      complete: function(res, status){
+        if(status == 'error'){
+          $('#contact-error-message').removeClass('hidden');
+          $('#contact-error-message').html("Грешка при слању.");
+        } else {
+          if(res.responseText == 'ok'){
+            //alert("Порука послата");
+            $('#msg-sent').show();
+            _form.find('[name=name]').val('');
+            _form.find('[name=email]').val('');
+            _form.find('[name=message]').val('');
+          } else {
+            $('#contact-error-message').removeClass('hidden');
+            $('#contact-error-message').html(res.responseText);
+          }
+        }
+      }
+    });
+
+    return false;
+  });
+
 })(jQuery);
 

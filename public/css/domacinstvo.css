@@ -1,8 +1,25 @@
 
+.hidden{
+	display: none;
+}
+
 /* Button in top menu: */
 .nav-menu a.btn{
 	padding: 3px 5px;
 }
+
+/*********************/
+/* Homepage styles: */
+
+#about .about-col{
+	height: 500px;
+}
+
+
+#call-to-action{
+	background: #016b01;
+}
+
 /**********************/
 
 .inner-page #header{ 
@@ -46,8 +63,3 @@
 
 
 /********************/
-
-#call-to-action{
-	background: #016b01;
-
-}
